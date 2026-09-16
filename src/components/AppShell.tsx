@@ -42,7 +42,6 @@ export function AppShell({
   useEffect(() => {
     setUser(user);
     setUnread(0);
-    setMenuOpen(false);
   }, [user, setUser, setUnread]);
 
   useEffect(() => {

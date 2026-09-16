@@ -6,7 +6,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "db:push": "npx drizzle-kit push",
+    "db:seed": "npx tsx scripts/seed.ts",
+    "db:push:seed": "npx tsx scripts/drizzle-push.ts && npx tsx scripts/seed.ts"
   },
   "dependencies": {
     "@types/leaflet": "^1.9.22",

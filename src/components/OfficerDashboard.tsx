@@ -110,8 +110,20 @@ export function OfficerDashboard({
   }, []);
 
   useEffect(() => {
-    if (tab === "verifikasi" && queue.length === 0) void loadQueue();
-  }, [tab, queue.length, loadQueue]);
+    if (tab !== "verifikasi" || queue.length > 0) return;
+    void (async () => {
+      setLoading(true);
+      try {
+        const res = await fetch("/api/reports?status=PENDING&limit=100", {
+          cache: "no-store",
+        });
+        const data = (await res.json()) as { reports: ApiReport[] };
+        setQueue(data.reports ?? []);
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, [tab, queue.length]);
 
   const review = async (id: number, status: "VERIFIED" | "REJECTED") => {
     setActingId(id);

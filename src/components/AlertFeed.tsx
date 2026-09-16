@@ -58,8 +58,13 @@ export function AlertFeed({ initialReports }: { initialReports: ApiReport[] }) {
   }, [setUnread]);
 
   useEffect(() => {
-    void loadNotifications();
-  }, [loadNotifications]);
+    void (async () => {
+      const res = await fetch("/api/notifications", { cache: "no-store" });
+      const data = (await res.json()) as { notifications: NotificationItem[] };
+      setNotifications(data.notifications ?? []);
+      setUnread((data.notifications ?? []).filter((item) => !item.isRead).length);
+    })();
+  }, [setNotifications, setUnread]);
 
   const refresh = useCallback(async () => {
     setLoading(true);
