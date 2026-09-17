@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { useWoroStore, type SessionUser } from "@/store/useWoroStore";
 import { cn } from "@/components/ui";
+import { TrakteerWidget } from "@/components/TrakteerWidget";
 
 const NAV_ITEMS = [
   { href: "/", label: "Beranda", icon: Sprout },
@@ -234,6 +235,7 @@ export function AppShell({
         </ul>
       </nav>
 
+      <TrakteerWidget />
     </div>
   );
 }

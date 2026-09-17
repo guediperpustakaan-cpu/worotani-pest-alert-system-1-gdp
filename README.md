@@ -95,3 +95,46 @@ masih kosong, sehingga pratinjau selalu memiliki data.
 | GET/PATCH | `/api/notifications` | Notifikasi & tandai terbaca |
 | POST | `/api/broadcast` | Siaran peringatan per wilayah (petugas) |
 | GET | `/api/health` | Health check |
+
+## Floating Widget Trakteer (Donasi)
+
+Aplikasi ini dilengkapi *floating widget* donasi di sudut kanan bawah layar untuk mendukung pengembangan dan biaya server.
+
+### Fitur Widget:
+- **Tombol浮动** dengan teks: *"Web app ini gratis & bebas iklan. Kopi kecil, server tetap jalan"*
+- **Modal donasi** muncul saat diklik, menampilkan pilihan nominal:
+  - Rp6.000 (1× kopi)
+  - Rp12.000 (2× kopi)
+  - Rp18.000 (3× kopi)
+  - Rp24.000 (4× kopi)
+  - Rp30.000 (5× kopi)
+  - Rp50.000
+  - Rp100.000
+- **QR Code langsung** di dalam web app (tanpa berpindah halaman) menggunakan `qrcode.react`
+- **Tombol "Buka halaman Trakteer"** untuk pembayaran manual
+- **Tombol "Download Source Code"** mengarahkan ke repositori GitHub
+- **Attribution**: "Open Source oleh MZF - 2026"
+
+### Teknologi Widget:
+- `qrcode.react` — generate QR code client-side
+- `lucide-react` — ikon
+- Tailwind CSS 4 — styling dengan animasi `animate-pop` & `animate-fade-up`
+- Zustand store — tidak diperlukan (widget mandiri)
+
+### File Widget:
+```
+src/components/TrakteerWidget.tsx
+```
+
+### Konfigurasi:
+- URL Trakteer: `https://trakteer.id/perpus_opera`
+- Nominal default: kelipatan 6.000 (Rp6.000–Rp100.000)
+- QR Code API: `https://api.qrserver.com/v1/create-qr-code/` (gratis, no API key)
+
+## Open Source
+
+**Open Source oleh MZF - 2026**
+
+Kode sumber lengkap tersedia di GitHub. Silakan fork, kontribusi, atau gunakan untuk pembelajaran.
+
+[Download Source Code](https://github.com/your-repo/worotani-pest-alert-system)
